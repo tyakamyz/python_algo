@@ -27,23 +27,24 @@
 # 예제 #2
 
 # 6개의 문서(A, B, C, D, E, F)가 인쇄 대기목록에 있고 중요도가 1 1 9 1 1 1 이므로 C D E F A B 순으로 인쇄합니다.
-from collections import deque;
 
 def solution(priorities, location):
     answer = 1
-    rePriorities = deque()
-
-    for index, p in enumerate(priorities):
-        rePriorities.append((p, index))
-
-    while rePriorities:
-        item = rePriorities.popleft()
-        if rePriorities and item[0] >= max(rePriorities)[0]:
-            if item[1] == location:
+ 
+    while priorities:
+        if priorities[0] == max(priorities):
+            if location == 0:
                 return answer
-            answer += 1
+            else: 
+                answer += 1
+                priorities.pop(0)
+                location -= 1
         else:
-            rePriorities.append(item)
+            priorities.append(priorities.pop(0))
+            if location == 0:
+                location = len(priorities) - 1
+            else:
+                location -= 1
 
     return answer
 
