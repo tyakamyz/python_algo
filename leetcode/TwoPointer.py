@@ -31,7 +31,7 @@ def hashtableSum(nums, target):
         dict[n] = True
     
     for n in nums:
-        if target-n in dict:
+        if target-n in dict and target-n != n:
             return True
         
     return False
@@ -39,4 +39,4 @@ def hashtableSum(nums, target):
 # 2, 1, 5, 7
 # 4, 1, 9, 7, 5, 3, 16
 print(twoPointer([4, 1, 9, 7, 5, 3, 16], 14)) 
-print(hashtableSum([4, 1, 9, 7, 5, 3, 16], 14)) 
+print(hashtableSum([4, 1, 9, 7], 14)) 
