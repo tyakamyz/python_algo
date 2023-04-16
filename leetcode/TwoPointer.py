@@ -25,6 +25,18 @@ def twoPointer(nums, target):
         
     return False
 
+def hashtableSum(nums, target):
+    dict = {}
+    for n in nums:
+        dict[n] = True
+    
+    for n in nums:
+        if target-n in dict:
+            return True
+        
+    return False
+
 # 2, 1, 5, 7
 # 4, 1, 9, 7, 5, 3, 16
 print(twoPointer([4, 1, 9, 7, 5, 3, 16], 14)) 
+print(hashtableSum([4, 1, 9, 7, 5, 3, 16], 14)) 
