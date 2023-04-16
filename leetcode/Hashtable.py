@@ -8,15 +8,17 @@ class Solution(object):
         """
         currentCount = 0
         maxCount = 0
-        dict = {}
         
-        for num in nums:
-            dict[num] = 0
+        #dict = {}
+        #for num in nums:
+        #    dict[num] = 0
+
+        hset = set(nums)
 
         for n in nums:
-            if n-1 not in dict:
+            if n-1 not in hset:
                 next = n+1
-                while next in dict:
+                while next in hset:
                     currentCount += 1
                     next += 1
                 maxCount = max(maxCount, currentCount)
