@@ -3,7 +3,7 @@
 from collections import deque
 
 def canVisitAllRooms(rooms):
-    visited = []
+    visited = set()
 
     def dfs(currentV):
         visited.append(currentV)
@@ -15,7 +15,7 @@ def canVisitAllRooms(rooms):
     def bfs(startV):
         que = deque()
         que.append(startV)
-        visited.append(startV)
+        visited.add(startV)
 
         while que:
             currentV = que.popleft()
@@ -23,7 +23,7 @@ def canVisitAllRooms(rooms):
             for v in rooms[currentV]:
                 if v not in visited:
                     que.append(v)
-                    visited.append(v)
+                    visited.add(v)
 
     #dfs(0)
     bfs(0)
