@@ -1,5 +1,7 @@
 # https://leetcode.com/problems/keys-and-rooms/
 
+from collections import deque
+
 def canVisitAllRooms(rooms):
     visited = []
 
@@ -10,7 +12,21 @@ def canVisitAllRooms(rooms):
             if v not in visited:
                 dfs(v)
 
-    dfs(0)
+    def bfs(startV):
+        que = deque()
+        que.append(startV)
+        visited.append(startV)
+
+        while que:
+            currentV = que.popleft()
+            
+            for v in rooms[currentV]:
+                if v not in visited:
+                    que.append(v)
+                    visited.append(v)
+
+    #dfs(0)
+    bfs(0)
 
     if len(visited) == len(rooms):
         return True
